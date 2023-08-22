@@ -1,6 +1,16 @@
+resource "tls_private_key" "key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "aws_key_pair" "auth_ssh" {
   key_name = "ec2_key_pair"
-  public_key = file("~/.ssh/aws-datalake-core.pub")
+  public_key = tls_private_key.key.public_key_openssh
+
+
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.key.private_key_pem}' > aws-datalake-'${var.application_name}'.pem"
+  }
 }
 
 resource "aws_instance" "ec2" {

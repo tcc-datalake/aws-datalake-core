@@ -22,3 +22,8 @@ variable "tag" {
   type        = string
   description = "tag"
 }
+
+variable "application_name" {
+  type        = string
+  description = "application name"
+}
