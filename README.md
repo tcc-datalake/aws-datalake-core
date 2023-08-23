@@ -11,4 +11,4 @@
 - Run `terraform plan --save`, then validate the generated plan about the resources
 - Run `terraform apply`, after this the infrastructure should be available in AWS
 
-<span style="color:red">DON'T FORGET TO RUN `terraform destroy` AFTER USE</span>
+<span style="color:red">DON'T FORGET TO RUN `terraform destroy` AFTER USE!</span>
