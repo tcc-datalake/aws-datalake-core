@@ -19,7 +19,7 @@ resource "aws_instance" "ec2" {
   key_name               = aws_key_pair.auth_ssh.id
   vpc_security_group_ids = [var.security_group_id]
   subnet_id              = var.subnet_id
-  user_data              = base64encode(file("${path.module}/template/EC2.tpl"))
+  user_data              = var.application_template
 
   root_block_device {
     volume_size = var.storage_size

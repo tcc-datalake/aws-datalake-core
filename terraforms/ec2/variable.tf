@@ -27,3 +27,8 @@ variable "application_name" {
   type        = string
   description = "application name"
 }
+
+variable "application_template" {
+  type        = string
+  description = "application name"
+}
