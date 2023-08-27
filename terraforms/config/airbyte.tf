@@ -1,6 +1,5 @@
-
 module "ec2_airbyte" {
-  source            = "./ec2"
+  source            = "../ec2"
   security_group_id = module.networking.security_group_id
   subnet_id         = module.networking.subnet_id
   instance_type     = "t2.medium"
