@@ -6,7 +6,7 @@ module "ec2_airbyte" {
   storage_size      = 10
   tag               = "ec2-${var.name_tag}"
   application_name  = "airbyte"
-  application_template = file("ec2/templates/build_airbyte.sh")
+  application_template = file("../ec2/templates/build_airbyte.sh")
 }
 
 resource "aws_eip" "eip_airbyte" {
