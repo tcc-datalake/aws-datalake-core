@@ -11,7 +11,11 @@ resource "aws_iam_policy" "glue_s3_policy" {
       Effect   = "Allow",
       Resource = [
         "${var.aws_s3_raw_bucket_arn}",
-        "${var.aws_s3_raw_bucket_arn}/*"
+        "${var.aws_s3_raw_bucket_arn}/*",
+        "${var.aws_s3_trusted_bucket_arn}",
+        "${var.aws_s3_trusted_bucket_arn}/*",
+        "${var.aws_s3_refined_bucket_arn}",
+        "${var.aws_s3_refined_bucket_arn}/*"
       ]
     }]
   })
@@ -66,7 +70,7 @@ resource "aws_iam_role" "glue_role" {
       }
     }]
   })
-
+  managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"]
   inline_policy {
     name = aws_iam_policy.glue_s3_policy.name
     policy = aws_iam_policy.glue_s3_policy.policy
@@ -81,4 +85,5 @@ resource "aws_iam_role" "glue_role" {
     name = aws_iam_policy.glue_catalog_policy.name
     policy = aws_iam_policy.glue_catalog_policy.policy
   }
+
 }

@@ -1,0 +1,10 @@
+{
+    "nasa":{
+        "database": "nasa",
+        "layers" : ["raw", "trusted"]
+    },
+    "spacex":{
+        "database": "spacex",
+        "layers" : ["raw", "trusted"]
+    }
+}
