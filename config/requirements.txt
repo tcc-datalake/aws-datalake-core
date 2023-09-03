@@ -1,0 +1,7 @@
+boto3
+pandas
+apache-airflow-providers-celery
+apache-airflow-providers-amazon
+awscli
+psycopg2
+redis
