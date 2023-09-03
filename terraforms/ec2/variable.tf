@@ -1,4 +1,4 @@
-variable "security_group_id" {
+variable "security_group_airbyte_id" {
   type        = string
   description = "security group id"
 }

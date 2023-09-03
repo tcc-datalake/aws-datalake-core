@@ -33,4 +33,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-aws-datalake-airbyte.pem
+*.pem

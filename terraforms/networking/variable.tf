@@ -3,8 +3,13 @@ variable "vpc_cidr" {
   description = "cidr block of vpc"
 }
 
-variable "public_subnets_cidr" {
+variable "airbyte_subnets_cidr" {
   type        = string
+  description = "cidr block of public subnets"
+}
+
+variable "airflow_subnets_cidr" {
+  type        = list(string)
   description = "cidr block of public subnets"
 }
 
@@ -14,7 +19,7 @@ variable "region" {
 }
 
 variable "availability_zones" {
-  type        = string
+  type        = list(string)
   description = "availability zones"
 }
 
