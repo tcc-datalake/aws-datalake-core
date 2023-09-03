@@ -1,18 +1,18 @@
-resource "aws_s3_bucket" "raw_bucket" {
-  bucket        = "raw-tcc-impacta-infra-datalake-5"
+resource "aws_s3_bucket" "s3_bucket" {
+  bucket        = var.bucket_name
   force_destroy = true
 }
 
-resource "aws_s3_bucket_ownership_controls" "raw_bucket" {
-  bucket = aws_s3_bucket.raw_bucket.id
+resource "aws_s3_bucket_ownership_controls" "s3_bucket" {
+  bucket = aws_s3_bucket.s3_bucket.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_acl" "raw_bucket" {
-  depends_on = [aws_s3_bucket_ownership_controls.raw_bucket]
+resource "aws_s3_bucket_acl" "s3_bucket" {
+  depends_on = [aws_s3_bucket_ownership_controls.s3_bucket]
 
-  bucket = aws_s3_bucket.raw_bucket.id
+  bucket = aws_s3_bucket.s3_bucket.id
   acl    = "private"
 }
