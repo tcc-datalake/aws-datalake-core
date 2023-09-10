@@ -16,7 +16,8 @@
 ### Result
 
 - After run, terraform will print DNS of alb, then you can access airflow ui and flower as example:
-Airflow ui: http://alb-1454002003.us-east-2.elb.amazonaws.com/home
+
+Airflow ui: http://alb-1454002003.us-east-2.elb.amazonaws.com/home <br>
 Flower: http://alb-1454002003.us-east-2.elb.amazonaws.com:5555/
 
 <span style="color:red">DON'T FORGET TO RUN `terraform destroy` AFTER USE!</span>
