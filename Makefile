@@ -1,5 +1,5 @@
 apply:
-	cd scripts && ./deploy.sh apply airflow
+	cd scripts && ./deploy.sh apply
 
 destroy:
 	cd scripts && ./deploy.sh destroy
