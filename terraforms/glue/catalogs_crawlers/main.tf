@@ -10,6 +10,7 @@ resource "aws_glue_crawler" "glue_crawler" {
   s3_target {
     path = var.database_s3_path
   }
+
   configuration = jsonencode({
     Version = 1.0,
     CrawlerOutput = {
@@ -22,4 +23,3 @@ resource "aws_glue_crawler" "glue_crawler" {
     }
   })
 }
-

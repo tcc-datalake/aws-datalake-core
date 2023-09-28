@@ -15,7 +15,9 @@ resource "aws_iam_policy" "glue_s3_policy" {
         "${var.aws_s3_trusted_bucket_arn}",
         "${var.aws_s3_trusted_bucket_arn}/*",
         "${var.aws_s3_refined_bucket_arn}",
-        "${var.aws_s3_refined_bucket_arn}/*"
+        "${var.aws_s3_refined_bucket_arn}/*",
+        "${var.aws_s3_glue_jobs_arn}",
+        "${var.aws_s3_glue_jobs_arn}/*"
       ]
     }]
   })
@@ -91,38 +93,38 @@ resource "aws_iam_policy" "ecs_task_policy" {
   name = "ecs-task-policy"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Action": [
+        "Action" : [
           "ecr:GetAuthorizationToken",
           "ecr:BatchCheckLayerAvailability",
           "ecr:GetDownloadUrlForLayer",
           "ecr:BatchGetImage"
         ],
-        "Effect": "Allow",
-        "Resource": "*"
+        "Effect" : "Allow",
+        "Resource" : "*"
       },
       {
-        "Action": [
+        "Action" : [
           "logs:*"
         ],
-        "Effect": "Allow",
-        "Resource": "*"
+        "Effect" : "Allow",
+        "Resource" : "*"
       },
       {
-        "Action": [
+        "Action" : [
           "s3:*"
         ],
-        "Effect": "Allow",
-        "Resource": "*"
+        "Effect" : "Allow",
+        "Resource" : "*"
       },
       {
-        "Action": [
+        "Action" : [
           "elasticfilesystem:*"
         ],
-        "Effect": "Allow",
-        "Resource": "*"
+        "Effect" : "Allow",
+        "Resource" : "*"
       }
     ]
   })
@@ -147,7 +149,7 @@ resource "aws_iam_role" "ecs_task_role" {
   })
 
   inline_policy {
-    name       = aws_iam_policy.ecs_task_policy.name
-    policy     = aws_iam_policy.ecs_task_policy.policy
+    name   = aws_iam_policy.ecs_task_policy.name
+    policy = aws_iam_policy.ecs_task_policy.policy
   }
 }
