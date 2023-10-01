@@ -11,7 +11,7 @@ RUN chmod +x /entrypoint.sh
 RUN apt-get update && \
     apt-get install -y build-essential libpq-dev postgresql
 
-COPY ../config/requirements.txt .
+COPY config/requirements.txt .
 RUN pip install --user --no-cache-dir -r requirements.txt
 
 EXPOSE 8080 5555 8793
