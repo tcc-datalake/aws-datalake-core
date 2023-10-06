@@ -31,7 +31,7 @@ variable "aws_alb_airflow_flower_id" {
 }
 
 variable "subnet_id" {
-  type = string
+  type = list(string)
 }
 
 variable "security_group_ecs_web_server_id" {
@@ -75,5 +75,9 @@ variable "log_group_name" {
 }
 
 variable "airflow_repository_url" {
+  type = string
+}
+
+variable "efs_airflow_id" {
   type = string
 }

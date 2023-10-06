@@ -54,6 +54,13 @@
         "value": "aws_default"
       }
     ],
+    "mountPoints": [
+      {
+          "containerPath": "${path_airflow_dags}",
+          "sourceVolume": "dags",
+          "readOnly": false
+      }
+    ],
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {

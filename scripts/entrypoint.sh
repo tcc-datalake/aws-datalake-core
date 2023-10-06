@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cp -R /application/dags/* /usr/local/airflow/dags/
+
 case "$1" in
   webserver)
         airflow db init \

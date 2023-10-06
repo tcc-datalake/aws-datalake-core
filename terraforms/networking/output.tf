@@ -41,3 +41,7 @@ output "security_group_ecs_airflow_scheduler_id" {
 output "security_group_ecs_airflow_flower_id" {
   value = aws_security_group.airflow_flower.id
 }
+
+output "security_group_efs_airflow" {
+  value = aws_security_group.efs_airflow.id
+}

@@ -1,7 +1,6 @@
 module "s3_raw" {
   source      = "../s3"
   bucket_name = "${var.name_tag}-raw"
-  depends_on  = [module.s3_glue_job_scripts]
 }
 
 module "s3_trusted" {
@@ -38,4 +37,9 @@ resource "aws_s3_object" "upload_glue_jobs" {
   etag    = "${filemd5("${path.module}/../../application/jobs/${each.value}.py")}"
 
   depends_on = [ module.s3_glue_job_scripts ]
+}
+
+module "s3_dags" {
+  source      = "../s3"
+  bucket_name = "${var.name_tag}-dags"
 }
