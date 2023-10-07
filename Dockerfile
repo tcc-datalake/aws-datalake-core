@@ -17,4 +17,7 @@ RUN pip install --user --no-cache-dir -r requirements.txt
 EXPOSE 8080 5555 8793
 
 WORKDIR ${AIRFLOW_HOME}
+
+COPY ./application/dags/ /usr/local/airflow/dags
+
 ENTRYPOINT ["/entrypoint.sh"]
