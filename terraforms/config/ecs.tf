@@ -1,4 +1,4 @@
-module "ecs" {
+/*module "ecs" {
   source                                  = "../ecs"
   cpu                                     = "256"
   memory                                  = "512"
@@ -23,3 +23,4 @@ module "ecs" {
   celery_backend                          = module.elasticache.celery_backend
   metadata_db                             = module.rds.metadata_db
 }
+*/

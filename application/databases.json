@@ -1,10 +1,6 @@
 {
-    "nasa":{
-        "database": "nasa",
-        "layers" : ["raw", "trusted"]
-    },
-    "spacex":{
-        "database": "spacex",
-        "layers" : ["raw", "trusted"]
+    "finance":{
+        "database": "finance",
+        "layers" : ["raw", "trusted", "refined"]
     }
 }
