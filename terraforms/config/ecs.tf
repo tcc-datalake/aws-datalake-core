@@ -16,11 +16,10 @@
   security_group_ecs_airflow_flower_id    = module.networking.security_group_ecs_airflow_flower_id
   celery_backend_address                  = module.elasticache.celery_backend_address
   log_group_tasks_arn                     = module.cloudwatch.log_group_tasks_arn
-  airflow_repository_url                  = module.ecr.airflow_repository_url
+  airflow_repository_url                  = ~#module.ecr.airflow_repository_url
 
   alb_airflow_web_server                  = module.alb.alb_airflow_web_server
   alb_airflow_flower                      = module.alb.alb_airflow_flower
   celery_backend                          = module.elasticache.celery_backend
   metadata_db                             = module.rds.metadata_db
-}
-*/
+}*/

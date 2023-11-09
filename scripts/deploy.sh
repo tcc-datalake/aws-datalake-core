@@ -26,7 +26,7 @@ if [ "$ACTION" == "apply" ]; then
   terraform apply -auto-approve
   cd ../../
 
-  build_image_and_push_to_ecr
+  #build_image_and_push_to_ecr
 
 elif [ "$ACTION" == "plan" ]; then
   terraform plan
