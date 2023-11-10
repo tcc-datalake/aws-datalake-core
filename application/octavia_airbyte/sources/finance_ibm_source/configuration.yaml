@@ -1,0 +1,15 @@
+# Configuration for airbyte/source-alpha-vantage
+# Documentation about this connector can be found at https://docs.airbyte.com/integrations/sources/alpha-vantage
+resource_name: "finance_ibm_source"
+definition_type: source
+definition_id: db385323-9333-4fec-bec3-9e0ca9326c90
+definition_image: airbyte/source-alpha-vantage
+definition_version: 0.1.1
+
+# EDIT THE CONFIGURATION BELOW!
+configuration:
+  symbol: "IBM" # REQUIRED | string | Stock symbol (with exchange code) | Examples: AAPL, TSCO.LON
+  api_key: ${ALPHA_VANTAGE_KEY} # SECRET (please store in environment variables) | REQUIRED | string | API Key
+  #adjusted: # OPTIONAL | boolean | Whether to return adjusted data. Only applicable to intraday endpoints.
+  interval: "1min" # OPTIONAL | string | Time-series data point interval. Required for intraday endpoints.
+  outputsize: "full" # OPTIONAL | string | Whether to return full or compact data (the last 100 data points).

@@ -1,0 +1,61 @@
+# Configuration for airbyte/destination-s3
+# Documentation about this connector can be found at https://docs.airbyte.com/integrations/destinations/s3
+resource_name: "s3_msft_destination"
+definition_type: destination
+definition_id: 4816b78f-1489-44c1-9060-4b19d5fa9362
+definition_image: airbyte/destination-s3
+definition_version: 0.5.1
+
+# EDIT THE CONFIGURATION BELOW!
+configuration:
+  format:
+    ## -------- Pick one valid structure among the examples below: --------
+    #format_type: "Parquet" # REQUIRED | string}
+    #compression_codec: "SNAPPY"
+      ## -------- Pick one valid structure among the examples below: --------
+      #codec: "" # REQUIRED | string
+      ## -------- Another valid structure for compression_codec: --------
+      # codec: "Deflate" # REQUIRED | string
+      # compression_level: # REQUIRED | integer | 0: no compression & fastest, 9: best compression & slowest.
+      ## -------- Another valid structure for compression_codec: --------
+      # codec: "bzip2" # REQUIRED | string
+      ## -------- Another valid structure for compression_codec: --------
+      # codec: "xz" # REQUIRED | string
+      # compression_level: 6 # REQUIRED | integer | See <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-">here</a> for details.
+      ## -------- Another valid structure for compression_codec: --------
+      # codec: "zstandard" # REQUIRED | string
+      # include_checksum: # OPTIONAL | boolean | If true, include a checksum with each data block.
+      # compression_level: 3 # REQUIRED | integer | Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+      ## -------- Another valid structure for compression_codec: --------
+      #codec: "snappy" # REQUIRED | string
+    ## -------- Another valid structure for format: --------
+    # flattening: "No flattening" # REQUIRED | string | Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.}
+    compression:
+      ## -------- Pick one valid structure among the examples below: --------
+      compression_type: "No Compression" # OPTIONAL | string
+      ## -------- Another valid structure for compression: --------
+      # compression_type: "GZIP" # OPTIONAL | string
+    # format_type: "CSV" # REQUIRED | string
+    ## -------- Another valid structure for format: --------}
+    compression:
+      ## -------- Pick one valid structure among the examples below: --------
+      compression_type: "No Compression" # OPTIONAL | string
+      ## -------- Another valid structure for compression: --------
+      # compression_type: "GZIP" # OPTIONAL | string
+    # format_type: "JSONL" # REQUIRED | string
+    ## -------- Another valid structure for format: --------
+    format_type: "Parquet" # REQUIRED | string
+    page_size_kb: 1024 # OPTIONAL | integer | The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB. | Example: 1024
+    block_size_mb: 128 # OPTIONAL | integer | This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB. | Example: 128
+    #compression_codec: "SNAPPY" # OPTIONAL | string | The compression algorithm used to compress data pages.
+    # dictionary_encoding: true # OPTIONAL | boolean | Default: true.
+    # max_padding_size_mb: 8 # OPTIONAL | integer | Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB. | Example: 8
+    # dictionary_page_size_kb: 1024 # OPTIONAL | integer | There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB. | Example: 1024
+  s3_endpoint: "" # OPTIONAL | string | Your S3 endpoint url. Read more <a href="https://docs.aws.amazon.com/general/latest/gr/s3.html#:~:text=Service%20endpoints-,Amazon%20S3%20endpoints,-When%20you%20use">here</a> | Example: http://localhost:9000
+  access_key_id: ${S3_ACCESS_KEY} # SECRET (please store in environment variables) | OPTIONAL | string | The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">here</a>. | Example: A012345678910EXAMPLE
+  s3_bucket_name: datalake-core-raw # music-production-silver # REQUIRED | string | The name of the S3 bucket. Read more <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">here</a>. | Example: airbyte_sync
+  s3_bucket_path: "database=raw_finance" # REQUIRED | string | Directory under the S3 bucket where data will be written. Read more <a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=to%20format%20the-,bucket%20path,-%3A">here</a> | Example: data_sync/test
+  s3_path_format: ${NAMESPACE}/MSFT/${YEAR}_${MONTH}_${DAY}_${EPOCH}_ # OPTIONAL | string | Format string on how data will be organized inside the S3 bucket directory. Read more <a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=The%20full%20path%20of%20the%20output%20data%20with%20the%20default%20S3%20path%20format">here</a> | Example: ${NAMESPACE}/${STREAM_NAME}/${YEAR}_${MONTH}_${DAY}_${EPOCH}_
+  s3_bucket_region: us-east-1 # REQUIRED | string | The region of the S3 bucket. See <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a> for all region codes.
+  file_name_pattern: "" # OPTIONAL | string | The pattern allows you to set the file-name format for the S3 staging file(s) | Examples: {date}, {date:yyyy_MM}, {timestamp}, {part_number}, {sync_id}
+  secret_access_key: ${S3_SECRET_KEY} # SECRET (please store in environment variables) | OPTIONAL | string | The corresponding secret to the access key ID. Read more <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">here</a> | Example: a012345678910ABCDEFGH/AbCdEfGhEXAMPLEKEY
