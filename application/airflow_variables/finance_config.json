@@ -1,0 +1,18 @@
+{
+    "finance_config": {
+        "aws_region": "us-east-1",
+        "connections": [
+            "finance_s3_aapl",
+            "finance_s3_ibm",
+            "finance_s3_msft"
+        ],
+        "dag_max_active_runs": "1",
+        "glue_asset_bucket": "aws-glue-assets-770802840260-us-east-1",
+        "glue_job_refined": "glue_job_trusted_to_refined",
+        "glue_job_trusted": "glue_job_raw_to_trusted",
+        "retry_count": "1",
+        "retry_delay_minutes": "1",
+        "schedule": "30 0 * * *",
+        "tasks_concurrency": "1"
+    }
+}

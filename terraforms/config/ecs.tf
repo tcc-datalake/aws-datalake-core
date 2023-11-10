@@ -1,4 +1,4 @@
-/*module "ecs" {
+module "ecs" {
   source                                  = "../ecs"
   cpu                                     = "256"
   memory                                  = "512"
@@ -22,4 +22,4 @@
   alb_airflow_flower                      = module.alb.alb_airflow_flower
   celery_backend                          = module.elasticache.celery_backend
   metadata_db                             = module.rds.metadata_db
-}*/
+}
