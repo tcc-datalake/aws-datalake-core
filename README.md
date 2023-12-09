@@ -1,5 +1,9 @@
 # aws-datalake-core
 
+### Diagram
+
+![infra](https://github.com/tcc-datalake/aws-datalake-core/assets/34386037/7b545fed-f1a2-4c65-9ce5-9a5372b57d3b)
+
 ### Prerequisites
 
 - Configure ~/.aws/credentials with your AWS credentials
